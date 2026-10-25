@@ -81,7 +81,7 @@
         ? `🚙 Distância a percorrer: ${distancia.replace('.',',')}`
         : distancia;
       document.getElementById('hotel-name').textContent=data.hotel.nome;
-      document.getElementById('hotel-detail').textContent=data.hotel.cidade+' · observação disponível no card';
+      document.getElementById('hotel-detail').textContent=(data.hotel.cidade || '-')+' · '+(data.hotel.telefone || '-');
       document.getElementById('hotel-price').textContent=data.hotel.valor;
       document.getElementById('km-day').textContent=data.km.dia; document.getElementById('km-week').textContent=data.km.semana; document.getElementById('km-month').textContent=data.km.mes;
       const queue=document.getElementById('queue-list');
