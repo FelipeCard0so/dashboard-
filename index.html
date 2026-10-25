@@ -75,7 +75,11 @@
       document.getElementById('last-detail').textContent=data.ultimo.cidade+' · '+data.ultimo.status;
       document.getElementById('moving-site').textContent='Em deslocamento · '+data.deslocamento.site;
       document.getElementById('moving-detail').textContent=data.deslocamento.cidade+' · '+data.deslocamento.detalhe;
-      document.getElementById('moving-distance').textContent=data.deslocamento.km || 'Distância não informada';
+      const distancia=String(data.deslocamento.km || 'Distância não informada');
+      const distanciaValida=/^\s*\d+(?:[.,]\d+)?\s*km\s*$/i.test(distancia);
+      document.getElementById('moving-distance').textContent=distanciaValida
+        ? `🚙 Distância a percorrer: ${distancia.replace('.',',')}`
+        : distancia;
       document.getElementById('hotel-name').textContent=data.hotel.nome;
       document.getElementById('hotel-detail').textContent=data.hotel.cidade+' · observação disponível no card';
       document.getElementById('hotel-price').textContent=data.hotel.valor;
